@@ -1,0 +1,3 @@
+@boardId = 67501
+
+GET https://business.untappd.com/api/v1/digital_boards/{{boardId}}?public=true
