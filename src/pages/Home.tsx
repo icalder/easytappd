@@ -9,6 +9,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { loader } from "@/lib/loader";
+import { Item } from "@/untappd/digitalboard";
 import { SelectContent } from "@radix-ui/react-select";
 import React from "react";
 import { useState } from "react";
@@ -29,12 +30,39 @@ export default function Home() {
     section.styles = [...new Set(section.items.map((item) => item.style))];
   }
 
+  const untappdBeerLink = (item: Item) => {
+    if (item.untappd_beer_slug && item.untappd_id) {
+      return `https://untappd.com/b/${item.untappd_beer_slug}/${item.untappd_id}`;
+    }
+    return "";
+  };
+
   const handleTabChanged = () => {
     setChosenStyle("_all_");
   };
 
   const handleStyleSelected = (style: string) => {
     setChosenStyle(style);
+  };
+
+  const beerImg = (item: Item) => {
+    const img = (
+      <img
+        src={item.label_image_thumb}
+        height="50"
+        width="50"
+        alt="label image"
+      ></img>
+    );
+    const link = untappdBeerLink(item);
+    if (link) {
+      return (
+        <a className="underline" target="_blank" href={link}>
+          {img}
+        </a>
+      );
+    }
+    return img;
   };
 
   return (
@@ -89,13 +117,8 @@ export default function Home() {
                     <span className="font-bold">{item.brewery}</span>&nbsp;
                     <span className="font-normal">{item.name}</span>
                   </CardTitle>
-                  <CardContent className="flex flex-row items-start gap-2 mt-1">
-                    <img
-                      src={item.label_image_thumb}
-                      height="50"
-                      width="50"
-                      alt="label image"
-                    ></img>
+                  <CardContent className="flex flex-row items-center gap-2 mt-1">
+                    {beerImg(item)}
                     <div>
                       <p>{item.style}</p>
                       <p>{item.abv}% ABV</p>
