@@ -27,7 +27,9 @@ export default function Home() {
       section.name = "Beers";
     }
     // Set section style options
-    section.styles = [...new Set(section.items.map((item) => item.style))];
+    section.styles = [
+      ...new Set(section.items.map((item) => item.style)),
+    ].sort();
   }
 
   const untappdBeerLink = (item: Item) => {
