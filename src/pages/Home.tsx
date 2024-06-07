@@ -80,7 +80,11 @@ export default function Home() {
       >
         <TabsList>
           {sections.map((section) => (
-            <TabsTrigger key={section.id} value={section.name}>
+            <TabsTrigger
+              className="text-lg"
+              key={section.id}
+              value={section.name}
+            >
               {section.name}
             </TabsTrigger>
           ))}
@@ -98,7 +102,7 @@ export default function Home() {
                 <SelectGroup className="overflow-y-auto max-h-[20rem]">
                   {section.styles.map((style) => (
                     <SelectItem
-                      className="bg-slate-950"
+                      className="bg-slate-950 text-lg"
                       key={style}
                       value={style}
                     >
