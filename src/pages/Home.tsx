@@ -84,7 +84,7 @@ export default function Home() {
                 (item) => chosenStyle == "_all_" || item.style == chosenStyle
               )
               .map((item) => (
-                <Card key={item.id}>
+                <Card key={item.id} className="mb-1">
                   <CardTitle>
                     <span className="font-bold">{item.brewery}</span>&nbsp;
                     <span className="font-normal">{item.name}</span>
