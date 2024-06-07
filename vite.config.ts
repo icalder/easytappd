@@ -22,7 +22,6 @@ export default defineConfig(({ command }) => {
           "@": path.resolve(__dirname, "./src"),
         },
       },
-      base: "/easytappd/",
     };
   }
 });
