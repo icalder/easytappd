@@ -7,18 +7,23 @@ import Settings from "./pages/Settings.tsx";
 import { saveSettings } from "./lib/settings.ts";
 import Home from "./pages/Home.tsx";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Home />,
+      loader: loader,
+    },
+    {
+      path: "/settings",
+      element: <Settings />,
+      action: saveSettings,
+    },
+  ],
   {
-    path: "/",
-    element: <Home />,
-    loader: loader,
-  },
-  {
-    path: "/settings",
-    element: <Settings />,
-    action: saveSettings,
-  },
-]);
+    basename: "/easytappd",
+  }
+);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
