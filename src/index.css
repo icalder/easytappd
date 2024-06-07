@@ -71,7 +71,7 @@
       @apply border-border;
     }
     body {
-      @apply bg-background text-foreground;
+      @apply bg-background text-foreground ml-1 mt-1;
     }
     h1 {
       @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
